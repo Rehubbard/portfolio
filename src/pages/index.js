@@ -8,53 +8,17 @@ import Gallery from '../components/Gallery'
 import serveThumbnail from '../assets/images/serve/serve-thumbnail.jpg'
 import serve1 from '../assets/images/serve/serve-1.png'
 
+import prometheusThumbnail from '../assets/images/p-thumbnail.jpg'
+import okfbThumbnail from '../assets/images/okfb-3.png'
+import theranestThumbnail from '../assets/images/theranest-thumbnail.jpg'
+
 const projectPhotos = {
   serve: [serve1],
 }
 
 class HomeIndex extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      lightboxIsOpen: false,
-      currentImage: 0,
-    }
-
-    this.closeLightbox = this.closeLightbox.bind(this)
-    this.gotoNext = this.gotoNext.bind(this)
-    this.gotoPrevious = this.gotoPrevious.bind(this)
-    this.openLightbox = this.openLightbox.bind(this)
-    this.handleClickImage = this.handleClickImage.bind(this)
-  }
-
-  openLightbox(index, event) {
-    event.preventDefault()
-    this.setState({
-      currentImage: index,
-      lightboxIsOpen: true,
-    })
-  }
-  closeLightbox() {
-    this.setState({
-      currentImage: 0,
-      lightboxIsOpen: false,
-    })
-  }
-  gotoPrevious() {
-    this.setState({
-      currentImage: this.state.currentImage - 1,
-    })
-  }
-  gotoNext() {
-    this.setState({
-      currentImage: this.state.currentImage + 1,
-    })
-  }
-  handleClickImage() {
-    if (this.state.currentImage === this.props.images.length - 1) return
-
-    this.gotoNext()
+  handleClickProject = e => {
+    console.log(e.target)
   }
 
   render() {
@@ -81,37 +45,68 @@ class HomeIndex extends React.Component {
             <div className="row">
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
-                  <a href="#">
+                  <a
+                    href="https://apps.apple.com/us/app/serve-day/id1364161205"
+                    target="blank"
+                  >
                     <img src={serveThumbnail} className="project-thumbnail" />
                   </a>
-                  <div className="project-description">Serve</div>
+                  <div className="project-description">
+                    <h4>Serve mobile app</h4>
+                    <p>
+                      Built for the{' '}
+                      <a
+                        href="https://www.churchofthehighlands.com/serve/"
+                        target="blank"
+                      >
+                        Church of the Highlands
+                      </a>
+                      . It accomodates their annual outreach program. Used by
+                      thousands, it is built with React Native & it's available
+                      on iOS & Android.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="6u 12u$(xsmall) project-item">
+                <div className="project">
+                  <img
+                    src={prometheusThumbnail}
+                    className="project-thumbnail"
+                  />
+                  <div className="project-description">
+                    <h4>Serve mobile app</h4>
+                  </div>
                 </div>
               </article>
 
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
                   <a href="#">
-                    <img src={serveThumbnail} className="project-thumbnail" />
+                    <img src={okfbThumbnail} className="project-thumbnail" />
                   </a>
-                  <div className="project-description">Serve</div>
+                  <div className="project-description">
+                    <h4>Auto Insurance Quote Portal</h4>
+                  </div>
                 </div>
               </article>
 
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
-                  <a href="#">
-                    <img src={serveThumbnail} className="project-thumbnail" />
+                  <a href="https://www.theranest.com/" target="blank">
+                    <img
+                      src={theranestThumbnail}
+                      className="project-thumbnail"
+                    />
                   </a>
-                  <div className="project-description">Serve</div>
-                </div>
-              </article>
-
-              <article className="6u 12u$(xsmall) project-item">
-                <div className="project">
-                  <a href="#">
-                    <img src={serveThumbnail} className="project-thumbnail" />
-                  </a>
-                  <div className="project-description">Serve</div>
+                  <div className="project-description">
+                    <h4>TheraNest website</h4>
+                    <p>
+                      Entire site redesign using Node, Jekyll, Grunt, HTML/CSS
+                      and vanilla JS.
+                    </p>
+                  </div>
                 </div>
               </article>
             </div>
