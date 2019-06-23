@@ -903,7 +903,7 @@
 		@include vendor('justify-content', 'space-between');
 		background-color:		_palette(accent2, bg);
 		background-attachment:	scroll,								fixed;
-		background-image:		url('images/overlay.png'),			url('../images/bg.jpg');
+		// background-image:		url('images/overlay.png'),			url('../images/bg.jpg');
 		background-position:	top left,							top left;
 		background-repeat:		repeat,								no-repeat;
 		background-size:		auto,								auto 100%;
@@ -943,7 +943,8 @@
 
 		.image.avatar {
 			margin: 0 0 (_size(element-margin) * 0.5) 0;
-			width: 6.25em;
+			width: 250px;
+			height: 250px;
 		}
 	}
 
@@ -998,7 +999,7 @@
 			margin: $size-header-pad 0 0 0;
 			padding: $size-header-pad 0 0 0;
 
-			&:first-child {
+			&:first-of-type {
 				border-top: 0;
 				margin-top: 0;
 				padding-top: 0;
@@ -1500,4 +1501,34 @@
 	.\34 u24 {
 		width: 100%;
 	}
+}
+
+.highlighter {
+	color: _palette(accent1, bg);
+}
+
+.project-item {
+	margin-bottom: 25px;
+}
+
+.project {
+	padding: 0;
+	background: _palette(border-bg);
+	border-radius: _size(border-radius);
+
+	> a {
+		border-bottom: none;
+		text-decoration: none;
+	}
+}
+
+.project-thumbnail {
+	max-height: 100%;
+	max-width: 100%;
+	border-top-left-radius: _size(border-radius);
+	border-top-right-radius: _size(border-radius);
+}
+
+.project-description {
+	padding: 10px 15px;
 }
