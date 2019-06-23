@@ -60,8 +60,8 @@ class HomeIndex extends React.Component {
                         target="blank"
                       >
                         Church of the Highlands
-                      </a>
-                      . It accomodates their annual outreach program. Used by
+                      </a>{' '}
+                      to accomodate their annual outreach program. Used by
                       thousands, it is built with React Native & it's available
                       on iOS & Android.
                     </p>
@@ -76,7 +76,12 @@ class HomeIndex extends React.Component {
                     className="project-thumbnail"
                   />
                   <div className="project-description">
-                    <h4>Serve mobile app</h4>
+                    <h4>Prometheus web & mobile app</h4>
+                    <p>
+                      Built for Prometheus' trail camera. The app, built with
+                      React Native, allows you to view pictures/videos captured
+                      by your cameras, manage camera settings & more.
+                    </p>
                   </div>
                 </div>
               </article>
@@ -88,6 +93,11 @@ class HomeIndex extends React.Component {
                   </a>
                   <div className="project-description">
                     <h4>Auto Insurance Quote Portal</h4>
+                    <p>
+                      Web app built with React & TypeScript. Serves as a
+                      customer facing insurance quote portal for Oklahoma Farm
+                      Bureau Insurance.{' '}
+                    </p>
                   </div>
                 </div>
               </article>
