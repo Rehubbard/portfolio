@@ -1531,6 +1531,10 @@
 	object-fit: cover;
 	border-top-left-radius: _size(border-radius);
 	border-top-right-radius: _size(border-radius);
+
+	&.lightbox {
+		cursor: pointer;
+	}
 }
 
 .project-description {
@@ -1543,4 +1547,16 @@
 	p {
 		line-height: 24px;
 	}
+}
+
+@media only screen and (max-width: 720px) {
+  .project {
+    height: 450px;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .project {
+    height: auto;
+  }
 }

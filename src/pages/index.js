@@ -4,6 +4,7 @@ import Lightbox from 'react-image-lightbox'
 
 import MainLayout from '../components/MainLayout'
 import Gallery from '../components/Gallery'
+import ProjectLightbox from '../components/ProjectLightbox'
 
 import serveThumbnail from '../assets/images/serve/serve-thumbnail.jpg'
 import serve1 from '../assets/images/serve/serve-1.png'
@@ -17,14 +18,34 @@ const projectPhotos = {
 }
 
 class HomeIndex extends React.Component {
-  handleClickProject = e => {
-    console.log(e.target)
+  state = {
+    isLightboxOpen: false,
+    projectBeingViewed: 'prometheus',
+  }
+
+  openLightbox = project => {
+    this.setState({
+      isLightboxOpen: true,
+      projectBeingViewed: project,
+    })
+  }
+
+  closeLightbox = () => {
+    this.setState({
+      isLightboxOpen: false,
+    })
   }
 
   render() {
     return (
       <MainLayout>
         <div id="main">
+          {this.state.isLightboxOpen && (
+            <ProjectLightbox
+              project={this.state.projectBeingViewed}
+              closeLightbox={this.closeLightbox}
+            />
+          )}
           <h1>
             👋🏻 I'm Eric Hubbard. A{' '}
             <span className="highlighter">developer</span> trying to build
@@ -73,14 +94,15 @@ class HomeIndex extends React.Component {
                 <div className="project">
                   <img
                     src={prometheusThumbnail}
-                    className="project-thumbnail"
+                    className="project-thumbnail lightbox"
+                    onClick={() => this.openLightbox('prometheus')}
                   />
                   <div className="project-description">
                     <h4>Prometheus web & mobile app</h4>
                     <p>
-                      Built for Prometheus' trail camera. The app, built with
-                      React Native, allows you to view pictures/videos captured
-                      by your cameras, manage camera settings & more.
+                      Built with React Native, the app gives you control over
+                      your trail camera(s). View pictures/videos captured,
+                      manage camera settings & more.
                     </p>
                   </div>
                 </div>
@@ -88,9 +110,11 @@ class HomeIndex extends React.Component {
 
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
-                  <a href="#">
-                    <img src={okfbThumbnail} className="project-thumbnail" />
-                  </a>
+                  <img
+                    src={okfbThumbnail}
+                    className="project-thumbnail lightbox"
+                    onClick={() => this.openLightbox('okfb')}
+                  />
                   <div className="project-description">
                     <h4>Auto Insurance Quote Portal</h4>
                     <p>
