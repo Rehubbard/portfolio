@@ -43,6 +43,7 @@ class ProjectLightbox extends React.Component {
           })
         }
         onCloseRequest={closeLightbox}
+        enableZoom={false}
       />
     )
   }
