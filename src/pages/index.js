@@ -1,13 +1,10 @@
 import React from 'react'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
 
 import MainLayout from '../components/MainLayout'
 import ProjectLightbox from '../components/ProjectLightbox'
-
-import serveThumbnail from '../assets/images/serve-thumbnail.jpg'
-import prometheusThumbnail from '../assets/images/p-thumbnail.jpg'
-import okfbThumbnail from '../assets/images/okfb-3.png'
-import theranestThumbnail from '../assets/images/theranest-thumbnail.jpg'
 
 class HomeIndex extends React.Component {
   state = {
@@ -28,13 +25,30 @@ class HomeIndex extends React.Component {
     })
   }
 
+  getProjectPhotos = () => {
+    const { data } = this.props
+    const projectPhotos = {
+      prometheus: [
+        data.prometheusOne.childImageSharp.fluid.src,
+        data.prometheusTwo.childImageSharp.fluid.src,
+        data.prometheusThree.childImageSharp.fluid.src,
+      ],
+      okfb: [
+        data.okfbOne.childImageSharp.fluid.src,
+        data.okfbTwo.childImageSharp.fluid.src,
+        data.okfbThree.childImageSharp.fluid.src,
+      ],
+    }
+    return projectPhotos
+  }
+
   render() {
     return (
       <MainLayout>
         <div id="main">
           {this.state.isLightboxOpen && (
             <ProjectLightbox
-              project={this.state.projectBeingViewed}
+              photos={this.getProjectPhotos()[this.state.projectBeingViewed]}
               closeLightbox={this.closeLightbox}
             />
           )}
@@ -62,7 +76,13 @@ class HomeIndex extends React.Component {
                     href="https://apps.apple.com/us/app/serve-day/id1364161205"
                     target="blank"
                   >
-                    <img src={serveThumbnail} className="project-thumbnail" />
+                    <Img
+                      fluid={
+                        this.props.data.serveThumbnail.childImageSharp.fluid
+                      }
+                      objectFit="cover"
+                      className="project-thumbnail"
+                    />
                   </a>
                   <div className="project-description">
                     <h4>Serve mobile app</h4>
@@ -84,11 +104,19 @@ class HomeIndex extends React.Component {
 
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
-                  <img
-                    src={prometheusThumbnail}
-                    className="project-thumbnail lightbox"
+                  <div
                     onClick={() => this.openLightbox('prometheus')}
-                  />
+                    className="lightbox"
+                  >
+                    <Img
+                      fluid={
+                        this.props.data.prometheusThumbnail.childImageSharp
+                          .fluid
+                      }
+                      objectFit="cover"
+                      className="project-thumbnail"
+                    />
+                  </div>
                   <div className="project-description">
                     <h4>Prometheus web & mobile app</h4>
                     <p>
@@ -102,11 +130,19 @@ class HomeIndex extends React.Component {
 
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
-                  <img
-                    src={okfbThumbnail}
-                    className="project-thumbnail lightbox"
+                  <div
                     onClick={() => this.openLightbox('okfb')}
-                  />
+                    className="lightbox"
+                  >
+                    <Img
+                      fluid={
+                        this.props.data.okfbThumbnail.childImageSharp.fluid
+                      }
+                      objectFit="cover"
+                      className="project-thumbnail"
+                      onClick={() => this.openLightbox('okfb')}
+                    />
+                  </div>
                   <div className="project-description">
                     <h4>Auto Insurance Quote Portal</h4>
                     <p>
@@ -121,8 +157,11 @@ class HomeIndex extends React.Component {
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
                   <a href="https://www.theranest.com/" target="blank">
-                    <img
-                      src={theranestThumbnail}
+                    <Img
+                      fluid={
+                        this.props.data.theranestThumbnail.childImageSharp.fluid
+                      }
+                      objectFit="cover"
                       className="project-thumbnail"
                     />
                   </a>
@@ -165,5 +204,80 @@ class HomeIndex extends React.Component {
     )
   }
 }
+
+export const pageQuery = graphql`
+  query {
+    serveThumbnail: file(relativePath: { eq: "serve-thumbnail.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    theranestThumbnail: file(relativePath: { eq: "theranest-thumbnail.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    prometheusThumbnail: file(relativePath: { eq: "p-thumbnail.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    okfbThumbnail: file(relativePath: { eq: "okfb-1.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    prometheusOne: file(relativePath: { eq: "p-mobile-1.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    prometheusTwo: file(relativePath: { eq: "p-mobile-2.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    prometheusThree: file(relativePath: { eq: "p-mobile-3.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    okfbOne: file(relativePath: { eq: "okfb-1.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    okfbTwo: file(relativePath: { eq: "okfb-2.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    okfbThree: file(relativePath: { eq: "okfb-3.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
 
 export default HomeIndex
