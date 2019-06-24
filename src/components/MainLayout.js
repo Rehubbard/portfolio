@@ -17,7 +17,6 @@ const MainLayout = ({ children }) => {
       }
     }
   `)
-  console.log(site.siteMetadata.title)
   return (
     <div>
       <Helmet>
@@ -26,7 +25,7 @@ const MainLayout = ({ children }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         ></meta>
-        <link rel="canonical" href="http://rehubbard.github.io/" />
+        <link rel="canonical" href="https://hubbard.dev/" />
         <link rel="icon" href="src/favicon.ico" type="image/x-icon" />
         <title>{site.siteMetadata.title}</title>
         <meta name="description" content={site.siteMetadata.description}></meta>
