@@ -2,18 +2,6 @@ import React from 'react'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 
-import prometheusOne from '../assets/images/p-mobile-1.png'
-import prometheusTwo from '../assets/images/p-mobile-2.png'
-import prometheusThree from '../assets/images/p-mobile-3.png'
-import okfbOne from '../assets/images/okfb-1.png'
-import okfbTwo from '../assets/images/okfb-2.png'
-import okfbThree from '../assets/images/okfb-3.png'
-
-const projectPhotos = {
-  prometheus: [prometheusOne, prometheusTwo, prometheusThree],
-  okfb: [okfbOne, okfbTwo, okfbThree],
-}
-
 class ProjectLightbox extends React.Component {
   constructor(props) {
     super(props)
@@ -23,10 +11,8 @@ class ProjectLightbox extends React.Component {
     }
   }
   render() {
-    console.log(this.props)
-    const { project, closeLightbox } = this.props
+    const { photos, closeLightbox } = this.props
     const { photoIndex } = this.state
-    const photos = projectPhotos[project]
     return (
       <Lightbox
         mainSrc={photos[photoIndex]}
