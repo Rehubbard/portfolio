@@ -1,21 +1,13 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import Lightbox from 'react-image-lightbox'
 
 import MainLayout from '../components/MainLayout'
-import Gallery from '../components/Gallery'
 import ProjectLightbox from '../components/ProjectLightbox'
 
-import serveThumbnail from '../assets/images/serve/serve-thumbnail.jpg'
-import serve1 from '../assets/images/serve/serve-1.png'
-
+import serveThumbnail from '../assets/images/serve-thumbnail.jpg'
 import prometheusThumbnail from '../assets/images/p-thumbnail.jpg'
 import okfbThumbnail from '../assets/images/okfb-3.png'
 import theranestThumbnail from '../assets/images/theranest-thumbnail.jpg'
-
-const projectPhotos = {
-  serve: [serve1],
-}
 
 class HomeIndex extends React.Component {
   state = {
