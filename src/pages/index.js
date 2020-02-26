@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import Img from 'gatsby-image/withIEPolyfill'
 import Helmet from 'react-helmet'
 
 import MainLayout from '../components/MainLayout'
@@ -73,6 +73,33 @@ class HomeIndex extends React.Component {
               <article className="6u 12u$(xsmall) project-item">
                 <div className="project">
                   <a
+                    href="https://apps.apple.com/us/app/dealnews-deals-coupons-app/id405566099"
+                    target="blank"
+                  >
+                    <Img
+                      fluid={
+                        this.props.data.dealNewsThumbnail.childImageSharp.fluid
+                      }
+                      objectFit="contain"
+                      className="project-thumbnail"
+                      style={{ backgroundColor: '#23528E' }}
+                      imgStyle={{ padding: 50 }}
+                    />
+                  </a>
+                  <div className="project-description">
+                    <h4>DealNews Mobile App</h4>
+                    <p>
+                      Entirely redesigned and rebuilt with React Native for
+                      DealNews, a popular online deal curator. Available on iOS
+                      & Android.
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              <article className="6u 12u$(xsmall) project-item">
+                <div className="project">
+                  <a
                     href="https://apps.apple.com/us/app/serve-day/id1364161205"
                     target="blank"
                   >
@@ -85,18 +112,17 @@ class HomeIndex extends React.Component {
                     />
                   </a>
                   <div className="project-description">
-                    <h4>Serve mobile app</h4>
+                    <h4>Serve Mobile App</h4>
                     <p>
-                      Built for the{' '}
+                      Built for{' '}
                       <a
                         href="https://www.churchofthehighlands.com/serve/"
                         target="blank"
                       >
-                        Church of the Highlands
+                        Church of the Highland's
                       </a>{' '}
-                      to accomodate their annual outreach program. Used by
-                      thousands, it is built with React Native & it's available
-                      on iOS & Android.
+                      community outreach program. A React Native that is widely
+                      used and available on iOS and Android.
                     </p>
                   </div>
                 </div>
@@ -118,11 +144,24 @@ class HomeIndex extends React.Component {
                     />
                   </div>
                   <div className="project-description">
-                    <h4>Prometheus web & mobile app</h4>
+                    <h4>Browning Trail Cameras App</h4>
                     <p>
-                      Built with React Native & React, these apps give you
-                      control over your trail camera(s). View pictures/videos
-                      captured, manage camera settings & more.
+                      Available on{' '}
+                      <a
+                        href="https://www.strikeforcewireless.com/"
+                        target="blank"
+                      >
+                        web
+                      </a>{' '}
+                      and{' '}
+                      <a
+                        href="https://apps.apple.com/us/app/strike-force-wireless/id1449894517"
+                        target="blank"
+                      >
+                        mobile
+                      </a>
+                      , this app gives users full control and access to their
+                      trail cameras. Built with React Native and ReactJS.
                     </p>
                   </div>
                 </div>
@@ -146,30 +185,9 @@ class HomeIndex extends React.Component {
                   <div className="project-description">
                     <h4>Auto Insurance Quote Portal</h4>
                     <p>
-                      Web app built with React & TypeScript. Serves as a
-                      customer facing insurance quote portal for Oklahoma Farm
-                      Bureau Insurance.{' '}
-                    </p>
-                  </div>
-                </div>
-              </article>
-
-              <article className="6u 12u$(xsmall) project-item">
-                <div className="project">
-                  <a href="https://www.theranest.com/" target="blank">
-                    <Img
-                      fluid={
-                        this.props.data.theranestThumbnail.childImageSharp.fluid
-                      }
-                      objectFit="cover"
-                      className="project-thumbnail"
-                    />
-                  </a>
-                  <div className="project-description">
-                    <h4>TheraNest website</h4>
-                    <p>
-                      Entire site redesign using Node, Jekyll, Grunt, HTML/CSS
-                      and vanilla JS.
+                      Web app built with React/TypeScript. Serves as a customer
+                      facing insurance quote portal for Oklahoma Farm Bureau
+                      Insurance.{' '}
                     </p>
                   </div>
                 </div>
@@ -207,6 +225,13 @@ class HomeIndex extends React.Component {
 
 export const pageQuery = graphql`
   query {
+    dealNewsThumbnail: file(relativePath: { eq: "dealnews-logo-white.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     serveThumbnail: file(relativePath: { eq: "serve-thumbnail.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
@@ -228,7 +253,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    okfbThumbnail: file(relativePath: { eq: "okfb-1.png" }) {
+    okfbThumbnail: file(relativePath: { eq: "okfb-3.png" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           ...GatsbyImageSharpFluid

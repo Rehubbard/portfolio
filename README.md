@@ -16,3 +16,7 @@ Install this starter (assuming Gatsby is installed) by running from your CLI:
 `gatsby new gatsby-starter-strata https://github.com/ChangoMan/gatsby-starter-strata`
 
 Run `gatsby develop` in the terminal to start.
+
+## Deployment
+
+Continous deployment is set up with Netlify and hooked up to the github repo. Push to the master branch and Netlify will _automatically_ run `gatsby build` and deploy the site to www.hubbard.dev
